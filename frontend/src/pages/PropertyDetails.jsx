@@ -162,7 +162,7 @@ export default function PropertyDetails() {
                 {isVideo ? (
                   <video 
                     key={currentMedia} 
-                    src={`http://localhost:3000${currentMedia}`} 
+                    src={currentMedia} 
                     controls 
                     autoPlay
                     style={{ width: '100%', maxHeight: '100%' }} 
@@ -170,7 +170,7 @@ export default function PropertyDetails() {
                 ) : (
                   <img 
                     key={currentMedia}
-                    src={`http://localhost:3000${currentMedia}`} 
+                    src={currentMedia} 
                     alt={property.name} 
                     className="gallery-img"
                     style={{ width: '100%', height: '100%', objectFit: 'contain' }} 

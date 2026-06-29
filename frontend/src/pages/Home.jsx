@@ -50,9 +50,9 @@ export default function Home() {
             <div key={p.id} className="card">
               {firstMedia ? (
                 isVideo ? (
-                  <video src={`http://localhost:3000${firstMedia}`} className="card-img" style={{ backgroundColor: '#000' }} muted />
+                  <video src={firstMedia} className="card-img" style={{ backgroundColor: '#000' }} muted />
                 ) : (
-                  <img src={`http://localhost:3000${firstMedia}`} alt={p.name} className="card-img" />
+                  <img src={firstMedia} alt={p.name} className="card-img" />
                 )
               ) : (
                 <img src="https://via.placeholder.com/400x300?text=No+Media" alt="Placeholder" className="card-img" />
