@@ -191,7 +191,26 @@ export default function PropertyDetails() {
           )}
           
           <h3>{t('description_title')}</h3>
-          <p style={{ whiteSpace: 'pre-wrap' }}>{property.description}</p>
+          <p style={{ whiteSpace: 'pre-wrap', marginBottom: '2rem' }}>{property.description}</p>
+
+          <div className="card" style={{ marginBottom: '2rem' }}>
+            <div className="card-body">
+              <h3 style={{ marginBottom: '1rem' }}>{language === 'uz' ? 'Joylashuv / Lokatsiya' : 'Локация'}</h3>
+              <div style={{ borderRadius: 'var(--radius-sm)', overflow: 'hidden', marginBottom: '1.5rem' }}>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d310.076975857165!2d70.07122233001962!3d41.56247592194746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38af73005cb9e731%3A0xabfa9acf656946c2!2sShaxriyorni%20dachasi!5e1!3m2!1sru!2s!4v1782736406812!5m2!1sru!2s" width="100%" height="350" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              
+              <p style={{ marginBottom: '1rem', color: 'var(--color-text-muted)' }}>
+                {language === 'uz' ? "Navigator orqali yo'nalish qurish:" : "Построить маршрут в навигаторе:"}
+              </p>
+              
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <a href="yandexnavi://build_route_on_map?lat_to=41.562476&lon_to=70.071222" className="btn btn-outline" style={{ flex: 1, textAlign: 'center', minWidth: '140px', padding: '0.8rem', fontWeight: 'bold' }}>Yandex Navigator</a>
+                <a href="https://yandex.ru/maps/?pt=70.071222,41.562476&z=18&l=map" target="_blank" rel="noreferrer" className="btn btn-outline" style={{ flex: 1, textAlign: 'center', minWidth: '140px', padding: '0.8rem' }}>Yandex Maps</a>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=41.562476,70.071222" target="_blank" rel="noreferrer" className="btn btn-outline" style={{ flex: 1, textAlign: 'center', minWidth: '140px', padding: '0.8rem' }}>Google Maps</a>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Right Column: Calendar & Booking form */}

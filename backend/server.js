@@ -318,6 +318,15 @@ app.post('/api/bookings/manual', authenticateToken, requireAdmin, async (req, re
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+// Serve frontend static files
+const frontendPath = path.join(__dirname, '../frontend/dist');
+app.use(express.static(frontendPath));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
+const serverPORT = process.env.PORT || 3000;
+app.listen(serverPORT, () => {
+  console.log(`Server is running on http://localhost:${serverPORT}`);
 });
