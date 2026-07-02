@@ -87,7 +87,7 @@ export default function AdminDashboard() {
     setManualError('');
     setManualSuccess('');
     try {
-      await api.createBooking({
+      await api.manualBooking({
         property_id: manualBooking.property_id,
         check_in: manualBooking.check_in,
         check_out: manualBooking.check_out,
