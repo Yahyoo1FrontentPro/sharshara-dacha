@@ -166,8 +166,8 @@ const checkOverlap = (propertyId, checkIn, checkOut, excludeBookingId = null) =>
 app.get('/api/bookings', authenticateToken, (req, res) => {
   let query = `
     SELECT b.*, p.name as property_name, 
-           COALESCE(u.name, b.guest_name) as user_name, 
-           COALESCE(u.phone, b.guest_phone) as user_phone
+           COALESCE(b.guest_name, u.name) as user_name, 
+           COALESCE(b.guest_phone, u.phone) as user_phone
     FROM bookings b
     JOIN properties p ON b.property_id = p.id
     LEFT JOIN users u ON b.user_id = u.id
