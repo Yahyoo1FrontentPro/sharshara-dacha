@@ -167,7 +167,7 @@ app.get('/api/bookings', authenticateToken, (req, res) => {
   let query = `
     SELECT b.*, p.name as property_name, 
            COALESCE(b.guest_name, u.name) as user_name, 
-           COALESCE(b.guest_phone, u.phone) as user_phone
+           CASE WHEN b.guest_name IS NOT NULL THEN b.guest_phone ELSE u.phone END as user_phone
     FROM bookings b
     JOIN properties p ON b.property_id = p.id
     LEFT JOIN users u ON b.user_id = u.id

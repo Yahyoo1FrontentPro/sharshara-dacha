@@ -141,7 +141,7 @@ export default function AdminDashboard() {
                   <strong>{t('check_out_label')}</strong> {new Date(b.check_out).toLocaleDateString(language === 'ru' ? 'ru-RU' : 'uz-UZ')}
                 </div>
                 <div style={{ marginBottom: '1rem', padding: '0.5rem', backgroundColor: '#f5f5f5', borderRadius: '4px' }}>
-                  <small>{b.user_name} ({b.user_phone})</small>
+                  <small>{b.user_name} {b.user_phone && b.user_phone.trim() !== '+998' ? `(${b.user_phone})` : ''}</small>
                 </div>
                 {b.comment && (
                   <p style={{ fontSize: '0.9rem', fontStyle: 'italic', marginBottom: '1rem' }}>"{b.comment}"</p>
@@ -164,7 +164,7 @@ export default function AdminDashboard() {
                       <h4>{b.property_name}</h4>
                       <div>{new Date(b.check_in).toLocaleDateString(language === 'ru' ? 'ru-RU' : 'uz-UZ')} - {new Date(b.check_out).toLocaleDateString(language === 'ru' ? 'ru-RU' : 'uz-UZ')}</div>
                       <div style={{ margin: '0.5rem 0' }}>
-                        <small>{b.user_name} ({b.user_phone})</small>
+                        <small>{b.user_name} {b.user_phone && b.user_phone.trim() !== '+998' ? `(${b.user_phone})` : ''}</small>
                       </div>
                       <div>
                         <span className={`badge badge-${b.status.toLowerCase()}`}>
