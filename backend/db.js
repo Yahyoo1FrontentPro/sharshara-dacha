@@ -81,6 +81,14 @@ const db = {
 
 async function initializeDb() {
   try {
+    if (process.env.CLEAR_DB === 'true') {
+      console.log('CLEAR_DB is set to true. Dropping all tables...');
+      await pool.query('DROP TABLE IF EXISTS bookings CASCADE');
+      await pool.query('DROP TABLE IF EXISTS properties CASCADE');
+      await pool.query('DROP TABLE IF EXISTS users CASCADE');
+      console.log('All tables dropped successfully.');
+    }
+
     // Users table
     await pool.query(`CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
